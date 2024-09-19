@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
-import { BsFillEmojiSunglassesFill, BsEmojiSunglasses } from "react-icons/bs";
+import { PiSunHorizonFill, PiSunHorizonDuotone } from "react-icons/pi";
 
 const DarkMode = () => {
   const [theme, setTheme] = useState(
@@ -23,12 +23,12 @@ const DarkMode = () => {
   return (
     <>
       {theme === "dark" ? (
-        <BsFillEmojiSunglassesFill
+        <PiSunHorizonFill
           className="text-2xl cursor-pointer"
           onClick={() => setTheme("light")}
         />
       ) : (
-        <BsEmojiSunglasses
+        <PiSunHorizonDuotone
           className="text-2xl cursor-pointer"
           onClick={() => setTheme("dark")}
         />
