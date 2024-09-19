@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+
 import React from 'react';
 import Logo from './../assets/logo.png';
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
