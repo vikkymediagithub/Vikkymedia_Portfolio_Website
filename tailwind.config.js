@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
+        sofadiOne: ["Sofadi One", "cursive"],
       },
       colors: {
         primary: "#00c2ff",
