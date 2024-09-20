@@ -14,9 +14,9 @@ const NavLinks = [
 const Navbar = () => {
   const [showSidebar, setShowSidebar] = React.useState(false);
   const [isDragging, setIsDragging] = React.useState(false);
-
+  
   const toggleSidebar = () => setShowSidebar(!showSidebar);
-
+  
   const handleDrag = (e) => {
     // Check if sidebar is dragged out of view
     if (e.clientX < 0 || e.clientX > window.innerWidth) {
@@ -24,7 +24,7 @@ const Navbar = () => {
       setIsDragging(false);
     }
   };
-
+  
   React.useEffect(() => {
     // Add event listeners for dragging
     window.addEventListener('mousemove', handleDrag);
@@ -36,44 +36,40 @@ const Navbar = () => {
   return (
     <>
       {/* Navbar */}
-      <div className='relative z-[9999] text-black dark:text-white duration-300'>
-        <div className='container'>
-          {/* Fixed Navbar */}
-          <div className='fixed top-0 left-0 right-0 backdrop-blur-lg bg-white/30 dark:bg-black/30 shadow-md h-[80px] z-[9999] transition-all duration-300 flex items-center'>
-            <div className='flex justify-between items-center w-full px-4 md:px-10'>
-              {/* Logo section */}
-              <div className='flex items-center gap-3 cursor-pointer'>
-                <img src={Logo} alt="Logo" className='h-12' />
-                <p className='text-3xl font-bold'>V<span className='text-primary'>Media</span></p>
-              </div>
+      <div className='fixed top-0 left-0 right-0 z-[9999] backdrop-blur-lg dark:text-white  bg-white/30 dark:bg-black/30 shadow-md h-[80px] transition-all duration-300'>
+        {/* Container limits the width */}
+        <div className='container mx-auto px-4 md:px-10 flex justify-between items-center h-full'>
+          {/* Logo section */}
+          <div className='flex items-center gap-3 cursor-pointer'>
+            <img src={Logo} alt="Logo" className='h-12' />
+            <p className='text-3xl font-bold'>Vikky<span className='text-secondary'>Media</span></p>
+          </div>
 
-              {/* Desktop Menu */}
-              <nav className='hidden md:flex items-center gap-8'>
-                {NavLinks.map(({ id, name, url }) => (
-                  <li key={id} className='list-none'>
-                    <a
-                      href={url}
-                      className='text-xl font-semibold hover:text-primary transition-colors duration-300 px-4 py-2'
-                    >
-                      {name}
-                    </a>
-                  </li>
-                ))}
-                {/* DarkMode features */}
-                <DarkMode />
-              </nav>
+          {/* Desktop Menu */}
+          <nav className='hidden md:flex items-center gap-8'>
+            {NavLinks.map(({ id, name, url }) => (
+              <li key={id} className='list-none'>
+                <a
+                  href={url}
+                  className='text-xl font-semibold hover:text-primary hover:border-b-2 hover:border-secondary transition-colors duration-300 px-4 py-2'
+                >
+                  {name}
+                </a>
+              </li>
+            ))}
+            {/* DarkMode features */}
+            <DarkMode />
+          </nav>
 
-              {/* Mobile Menu Toggle */}
-              <div className='md:hidden block'>
-                <div className='flex items-center gap-5'>
-                  <DarkMode />
-                  {showSidebar ? (
-                    <HiMenuAlt1 onClick={toggleSidebar} className='cursor-pointer' size={30} />
-                  ) : (
-                    <HiMenuAlt3 onClick={toggleSidebar} className='cursor-pointer' size={30} />
-                  )}
-                </div>
-              </div>
+          {/* Mobile Menu Toggle */}
+          <div className='md:hidden block'>
+            <div className='flex items-center gap-5'>
+              <DarkMode />
+              {showSidebar ? (
+                <HiMenuAlt1 onClick={toggleSidebar} className='cursor-pointer' size={30} />
+              ) : (
+                <HiMenuAlt3 onClick={toggleSidebar} className='cursor-pointer' size={30} />
+              )}
             </div>
           </div>
         </div>
@@ -83,14 +79,12 @@ const Navbar = () => {
       <div
         className={`fixed top-0 left-0 h-full w-[250px] bg-white dark:bg-gray-800 transition-transform duration-300 transform ${
           showSidebar ? 'translate-x-0' : '-translate-x-full'
-        } z-[9998] shadow-lg border-b-2 border-gray-200 dark:border-gray-600`}
-        style={{ 
-          transition: isDragging ? 'none' : 'transform 0.3s ease' // Handle transition during dragging
-        }}
+        } z-[9998] shadow-lg boder-b-2 border-gray-200 dark:border-gray-600`}
+        style={{transition: isDragging ? 'none' : 'transform 0.3s ease'}}
       >
         <div className='flex justify-between items-center p-4 bg-gray-100 dark:bg-gray-900'>
           <p className='text-2xl font-bold text-black dark:text-white'>
-            V<span className='text-primary'>Media</span>
+            Vikky<span className='text-secondary'>Media</span>
           </p>
           <AiOutlineClose
             className='text-3xl cursor-pointer text-black dark:text-white'
@@ -102,7 +96,7 @@ const Navbar = () => {
             <li key={id}>
               <a
                 href={url}
-                className='text-xl font-semibold text-black dark:text-white hover:text-primary dark:hover:text-primary transition-colors duration-300'
+                className='text-xl font-semibold text-black dark:text-white hover:text-primary hover:border-b-2 hover:border-secondary dark:hover:text-primary transition-colors duration-300'
                 onClick={toggleSidebar} // Close sidebar on click
               >
                 {name}
